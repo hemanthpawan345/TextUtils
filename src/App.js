@@ -3,8 +3,8 @@ import Alert from "./components/Alert";
 import Navbar from "./components/Navbar";
 import TextForm from "./components/TextForm";
 import React, { useState } from "react";
-import About from "./components/About";
-import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
+// import About from "./components/About";
+// import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
 export default function App() {
   const [mode, setMode] = useState("dark");
   const [alert, setAlert] = useState(null);
@@ -35,7 +35,21 @@ export default function App() {
   };
   return (
     <>
-      <Router>
+      <Navbar
+        title="TextUtils"
+        aboutText="About"
+        mode={mode}
+        toggleMode={toggleMode}
+      />
+      <Alert alert={alert} />
+      <div className="container my-3">
+        <TextForm
+          showAlert={showAlert}
+          heading="Enter the text to analyze"
+          mode={mode}
+        />
+      </div>
+      {/* <Router>
         <Navbar
           title="TextUtils"
           aboutText="About"
@@ -59,7 +73,7 @@ export default function App() {
             ></Route>
           </Routes>
         </div>
-      </Router>
+      </Router> */}
     </>
   );
 }
